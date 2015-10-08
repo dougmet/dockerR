@@ -5,6 +5,9 @@ FROM ubuntu:14.04
 ## Who made this
 MAINTAINER "Doug Ashton" dashton@mango-solutions.com
 
+ENV R_BASE_VERSION 3.1.2
+ENV R_CRAN_DATE 2014-11-15
+
 ## Set a default user. Available via runtime flag `--user docker` 
 ## Add user to 'staff' group, granting them write privileges to /usr/local/lib/R/site.library
 ## User should also have & own a home directory (for rstudio or linked volumes to work properly). 
@@ -12,9 +15,6 @@ RUN useradd docker \
 	&& mkdir /home/docker \
 	&& chown docker:docker /home/docker \
 	&& addgroup docker staff
-
-ENV R_BASE_VERSION 3.1.2
-ENV R_CRAN_DATE 2014-11-15
 
 ## Configure default locale, see https://github.com/rocker-org/rocker/issues/19
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
