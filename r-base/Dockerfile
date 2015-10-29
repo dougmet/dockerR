@@ -5,8 +5,9 @@ FROM ubuntu:14.04
 ## Who made this
 MAINTAINER "Doug Ashton" dashton@mango-solutions.com
 
+# 1st March 2015, just before 3.1.3 release
 ENV R_BASE_VERSION 3.1.2
-ENV R_CRAN_DATE 2014-11-15
+ENV R_CRAN_DATE 2015-03-01
 
 ## Set a default user. Available via runtime flag `--user docker` 
 ## Add user to 'staff' group, granting them write privileges to /usr/local/lib/R/site.library
@@ -39,8 +40,15 @@ RUN echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" >> /etc/apt/sour
 # Set the MRAN mirror
 RUN echo "local({\n  r <- getOption(\"repos\")\n\
 	r[\"CRAN\"] <- \
-	\"http://mran.revolutionanalytics.com/snapshot/"${R_CRAN_DATE}"\"\n\
+	\"https://mran.revolutionanalytics.com/snapshot/"${R_CRAN_DATE}"\"\n\
 	options(repos = r)\n\
 	})\n" >> /etc/R/Rprofile.site
+
+# Install switchr for package management
+# Note that this is NOT from the MRAN mirror due to release dates
+RUN wget -P /tmp/ https://cran.r-project.org/src/contrib/Archive/switchr/switchr_0.9.18.tar.gz \
+    && Rscript -e 'install.packages("/tmp/switchr_0.9.18.tar.gz", type="source", repos=NULL)' \
+	&& rm /tmp/switchr_0.9.18.tar.gz
+
 
 CMD ["R"]
