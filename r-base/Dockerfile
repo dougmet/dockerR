@@ -40,7 +40,7 @@ RUN echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" >> /etc/apt/sour
 # Set the MRAN mirror
 RUN echo "local({\n  r <- getOption(\"repos\")\n\
 	r[\"CRAN\"] <- \
-	\"https://mran.revolutionanalytics.com/snapshot/"${R_CRAN_DATE}"\"\n\
+	\"http://mran.revolutionanalytics.com/snapshot/"${R_CRAN_DATE}"\"\n\
 	options(repos = r)\n\
 	})\n" >> /etc/R/Rprofile.site
 
