@@ -48,6 +48,7 @@ RUN echo "local({\n  r <- getOption(\"repos\")\n\
 # Note that this is NOT from the MRAN mirror due to release dates
 RUN wget -P /tmp/ https://cran.r-project.org/src/contrib/Archive/switchr/switchr_0.9.18.tar.gz \
     && Rscript -e 'install.packages("/tmp/switchr_0.9.18.tar.gz", type="source", repos=NULL)' \
+	&& Rscript -e 'install.packages("RCurl")' \
 	&& rm /tmp/switchr_0.9.18.tar.gz
 
 
