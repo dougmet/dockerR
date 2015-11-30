@@ -31,7 +31,7 @@ RUN echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" >> /etc/apt/sour
 	&& apt-get -qq update \
 	&& apt-get -y install r-base-core=${R_BASE_VERSION}* \
 		r-base-dev=${R_BASE_VERSION}* \
-#		r-recommended=${R_BASE_VERSION}* \
+		r-recommended=${R_BASE_VERSION}* \
 		libcurl4-openssl-dev \
 		libxml2-dev \
 		git \
