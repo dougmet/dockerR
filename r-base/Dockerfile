@@ -46,7 +46,7 @@ RUN echo "local({\n  r <- getOption(\"repos\")\n\
 
 # Install pkgsnap for package management
 RUN cd /tmp \
-    && git clone https://github.com/MangoTheCat/pkgsnap.git \
+    && git clone https://github.com/dougmet/pkgsnap.git \
 	&& R CMD INSTALL -l "/usr/local/lib/R/site-library" pkgsnap \
 	&& rm -r pkgsnap
 
