@@ -5,9 +5,9 @@ FROM ubuntu:14.04
 ## Who made this
 MAINTAINER "Doug Ashton" dashton@mango-solutions.com
 
-# 1st March 2015, just before 3.1.3 release
-ENV R_BASE_VERSION 3.1.2
-ENV R_CRAN_DATE 2015-03-01
+# 29th October 2015, mid release. Should update?
+ENV R_BASE_VERSION 3.2.2
+ENV R_CRAN_DATE 2015-10-29
 
 ## Set a default user. Available via runtime flag `--user docker` 
 ## Add user to 'staff' group, granting them write privileges to /usr/local/lib/R/site.library
@@ -44,11 +44,11 @@ RUN echo "local({\n  r <- getOption(\"repos\")\n\
 	options(repos = r)\n\
 	})\n" >> /etc/R/Rprofile.site
 
-# Install switchr for package management
-# Note that this is NOT from the MRAN mirror due to release dates
-RUN wget -P /tmp/ https://cran.r-project.org/src/contrib/Archive/switchr/switchr_0.9.18.tar.gz \
-    && Rscript -e 'install.packages("/tmp/switchr_0.9.18.tar.gz", type="source", repos=NULL)' \
-	&& rm /tmp/switchr_0.9.18.tar.gz
+# Install pkgsnap for package management
+RUN cd /tmp \
+    && git clone https://github.com/MangoTheCat/pkgsnap.git \
+	&& R CMD INSTALL -l "/usr/local/lib/R/site-library" pkgsnap \
+	&& rm -r pkgsnap
 
 
 CMD ["R"]
