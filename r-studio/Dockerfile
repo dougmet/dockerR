@@ -1,5 +1,5 @@
 ## Start with the official rocker image providing 'base R'
-FROM dougmet/r-base:3.2.2
+FROM dougmet/r-base:3.2.3
 
 ## This is mercilessly copied from rocker/r-studio just swapping
 ## out their base for mine
