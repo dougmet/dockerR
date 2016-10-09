@@ -5,9 +5,9 @@ FROM ubuntu:14.04
 ## Who made this
 MAINTAINER "Doug Ashton" dashton@mango-solutions.com
 
-# 16th Feb 2016, mid release.
-ENV R_BASE_VERSION 3.3.1
-ENV R_CRAN_DATE 2016-10-04
+# 1st May just before 3.3.0
+ENV R_BASE_VERSION 3.2.5
+ENV R_CRAN_DATE 2016-05-01
 
 ## Set a default user. Available via runtime flag `--user docker` 
 ## Add user to 'staff' group, granting them write privileges to /usr/local/lib/R/site.library
