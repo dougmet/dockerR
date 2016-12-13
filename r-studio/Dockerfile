@@ -1,5 +1,5 @@
 ## Start with the official rocker image providing 'base R'
-FROM dougmet/r-base:3.3.1
+FROM dougmet/r-base:3.3.2
 
 ## This is mercilessly copied from rocker/r-studio just swapping
 ## out their base for mine
@@ -26,7 +26,7 @@ RUN rm -rf /var/lib/apt/lists/ \
     supervisor \
     sudo \
 # && VER=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/rstudio-server/current.ver) \
-  && VER=0.99.903 \
+  && VER=1.0.44 \
   && wget -q http://download2.rstudio.org/rstudio-server-${VER}-amd64.deb \
   && dpkg -i rstudio-server-${VER}-amd64.deb \
   && rm rstudio-server-*-amd64.deb \
